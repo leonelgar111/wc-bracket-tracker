@@ -1,0 +1,199 @@
+{
+  "winners": {
+    "R32": ["PAR", "CAN", "MAR", "BRA"],
+    "R16": [],
+    "QF": [],
+    "SF": [],
+    "Champion": null
+  },
+  "matches": [
+    {
+      "id": "match-73",
+      "stage": "R32",
+      "homeTeam": "CAN",
+      "awayTeam": "RSA",
+      "homeScore": 1,
+      "awayScore": 0,
+      "venue": "",
+      "date": "2026-06-29",
+      "notes": "Match 73"
+    },
+    {
+      "id": "match-74",
+      "stage": "R32",
+      "homeTeam": "PAR",
+      "awayTeam": "GER",
+      "homeScore": 1,
+      "awayScore": 1,
+      "venue": "",
+      "date": "2026-06-29",
+      "notes": "Match 74 · PAR won 4-3 on penalties"
+    },
+    {
+      "id": "match-75",
+      "stage": "R32",
+      "homeTeam": "MAR",
+      "awayTeam": "NED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "venue": "",
+      "date": "2026-06-30",
+      "notes": "Match 75 · MAR won 3-2 on penalties"
+    },
+    {
+      "id": "match-76",
+      "stage": "R32",
+      "homeTeam": "BRA",
+      "awayTeam": "JPN",
+      "homeScore": 2,
+      "awayScore": 1,
+      "venue": "",
+      "date": "2026-06-30",
+      "notes": "Match 76"
+    },
+    {
+      "id": "match-77",
+      "stage": "R32",
+      "homeTeam": "CIV",
+      "awayTeam": "NOR",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-06-30",
+      "time": "11:00 AM",
+      "notes": ""
+    },
+    {
+      "id": "match-78",
+      "stage": "R32",
+      "homeTeam": "FRA",
+      "awayTeam": "SWE",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-06-30",
+      "time": "3:00 PM",
+      "notes": ""
+    },
+    {
+      "id": "match-79",
+      "stage": "R32",
+      "homeTeam": "MEX",
+      "awayTeam": "ECU",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-06-30",
+      "time": "7:00 PM",
+      "notes": ""
+    },
+    {
+      "id": "match-80",
+      "stage": "R32",
+      "homeTeam": "ENG",
+      "awayTeam": "COD",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-07-01",
+      "time": "10:00 AM",
+      "notes": ""
+    },
+    {
+      "id": "match-81",
+      "stage": "R32",
+      "homeTeam": "USA",
+      "awayTeam": "BIH",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-07-01",
+      "time": "",
+      "notes": ""
+    },
+    {
+      "id": "match-82",
+      "stage": "R32",
+      "homeTeam": "BEL",
+      "awayTeam": "SEN",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-07-01",
+      "time": "",
+      "notes": ""
+    },
+    {
+      "id": "match-83",
+      "stage": "R32",
+      "homeTeam": "POR",
+      "awayTeam": "CRO",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-07-02",
+      "time": "",
+      "notes": ""
+    },
+    {
+      "id": "match-84",
+      "stage": "R32",
+      "homeTeam": "ESP",
+      "awayTeam": "AUT",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-07-02",
+      "time": "",
+      "notes": ""
+    },
+    {
+      "id": "match-85",
+      "stage": "R32",
+      "homeTeam": "SUI",
+      "awayTeam": "ALG",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-07-02",
+      "time": "",
+      "notes": ""
+    },
+    {
+      "id": "match-86",
+      "stage": "R32",
+      "homeTeam": "ARG",
+      "awayTeam": "CPV",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-07-03",
+      "time": "",
+      "notes": ""
+    },
+    {
+      "id": "match-87",
+      "stage": "R32",
+      "homeTeam": "AUS",
+      "awayTeam": "EGY",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-07-03",
+      "time": "",
+      "notes": ""
+    },
+    {
+      "id": "match-88",
+      "stage": "R32",
+      "homeTeam": "COL",
+      "awayTeam": "GHA",
+      "homeScore": null,
+      "awayScore": null,
+      "venue": "",
+      "date": "2026-07-03",
+      "time": "",
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000/api/results)",
+      "Bash(python3 -m json.tool)",
+      "Bash(node -e ' *)",
+      "Bash(node --input-type=module)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(identify \"/var/folders/38/k5m9hw316xg1v2fhs_9z0n2m0000gn/T/TemporaryItems/NSIRD_screencaptureui_qRmphX/Screenshot 2026-06-30 at 3.06.38 AM.png\")",
+      "Bash(sips -g pixelWidth -g pixelHeight \"/var/folders/38/k5m9hw316xg1v2fhs_9z0n2m0000gn/T/TemporaryItems/NSIRD_screencaptureui_qRmphX/Screenshot 2026-06-30 at 3.06.38 AM.png\")",
+      "Bash(grep -iE \"\\\\.\\(jpg|jpeg|png|webp\\)$\")",
+      "Bash(cp \"/Users/leonelgarcia/Downloads/ChatGPT Image Jun 30, 2026, 03_13_04 AM.png\" /Users/leonelgarcia/Documents/wc-bracket-tracker/public/avatars/carlos.png)",
+      "Bash(cp \"/Users/leonelgarcia/Downloads/ChatGPT Image Jun 30, 2026, 03_13_31 AM.png\" /Users/leonelgarcia/Documents/wc-bracket-tracker/public/avatars/abe.png)",
+      "Bash(cp \"/Users/leonelgarcia/Downloads/ChatGPT Image Jun 30, 2026, 03_13_47 AM.png\" /Users/leonelgarcia/Documents/wc-bracket-tracker/public/avatars/joey.png)",
+      "Bash(cp \"/Users/leonelgarcia/Downloads/ChatGPT Image Jun 30, 2026, 03_14_01 AM.png\" /Users/leonelgarcia/Documents/wc-bracket-tracker/public/avatars/adan.png)"
+    ]
+  }
+}

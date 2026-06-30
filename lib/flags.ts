@@ -1,0 +1,38 @@
+export const FLAGS: Record<string, string> = {
+  GER: '🇩🇪',
+  FRA: '🇫🇷',
+  CAN: '🇨🇦',
+  NED: '🇳🇱',
+  POR: '🇵🇹',
+  ESP: '🇪🇸',
+  USA: '🇺🇸',
+  BEL: '🇧🇪',
+  BRA: '🇧🇷',
+  NOR: '🇳🇴',
+  MEX: '🇲🇽',
+  ENG: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+  ARG: '🇦🇷',
+  EGY: '🇪🇬',
+  SUI: '🇨🇭',
+  COL: '🇨🇴',
+  SEN: '🇸🇳',
+  CIV: '🇨🇮',
+  AUS: '🇦🇺',
+  ALG: '🇩🇿',
+  PAR: '🇵🇾',
+  MAR: '🇲🇦',
+  BIH: '🇧🇦',
+  COD: '🇨🇩',
+  CPV: '🇨🇻',
+  JPN: '🇯🇵',
+  RSA: '🇿🇦',
+  SWE: '🇸🇪',
+  ECU: '🇪🇨',
+  CRO: '🇭🇷',
+  AUT: '🇦🇹',
+  GHA: '🇬🇭',
+};
+
+export function flag(code: string): string {
+  return FLAGS[code.toUpperCase()] ?? '🏳️';
+}
