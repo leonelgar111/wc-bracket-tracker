@@ -1,6 +1,6 @@
 {
   "winners": {
-    "R32": ["PAR", "CAN", "MAR", "BRA"],
+    "R32": ["PAR", "CAN", "MAR", "BRA", "FRA", "NOR"],
     "R16": [],
     "QF": [],
     "SF": [],
@@ -56,11 +56,10 @@
       "stage": "R32",
       "homeTeam": "CIV",
       "awayTeam": "NOR",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 1,
+      "awayScore": 2,
       "venue": "",
       "date": "2026-06-30",
-      "time": "11:00 AM",
       "notes": ""
     },
     {
@@ -68,11 +67,10 @@
       "stage": "R32",
       "homeTeam": "FRA",
       "awayTeam": "SWE",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 3,
+      "awayScore": 0,
       "venue": "",
       "date": "2026-06-30",
-      "time": "3:00 PM",
       "notes": ""
     },
     {
