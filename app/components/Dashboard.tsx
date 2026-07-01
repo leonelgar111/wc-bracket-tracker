@@ -407,7 +407,7 @@ export default function Dashboard({
           Realistic
         </button>
         <button className={`tab-pill ${tab === 'fun' ? 'active' : ''}`} onClick={() => setTab('fun')}>
-          Fun
+          Fuck It I&apos;m Young
         </button>
       </div>
 
@@ -427,8 +427,8 @@ export default function Dashboard({
               fontWeight: 500,
               padding: '3px 9px',
               borderRadius: 7,
-              background: 'rgba(0,0,0,0.07)',
-              color: 'var(--text-tertiary)',
+              background: 'rgba(0,0,0,0.13)',
+              color: '#5a5a5a',
             }}
           >
             {label} = {pts}
