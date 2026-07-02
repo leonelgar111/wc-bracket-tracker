@@ -38,7 +38,7 @@ export default function Home() {
         <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
           {/* Logo + title */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <img src="/wc-logo.jpeg" alt="WC 2026" style={{ height: 60, width: 'auto', flexShrink: 0 }} />
+            <img src="/wc-logo.jpeg" alt="WC 2026" style={{ height: 60, width: 'auto', flexShrink: 0, borderRadius: 8, background: 'transparent', mixBlendMode: 'multiply' }} />
             {/* Thin divider */}
             <div style={{ width: 1, height: 28, background: 'rgba(0,0,0,0.12)', flexShrink: 0 }} />
             <div>
