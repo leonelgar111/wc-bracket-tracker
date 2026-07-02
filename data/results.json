@@ -1,6 +1,6 @@
 {
   "winners": {
-    "R32": ["PAR", "CAN", "MAR", "BRA", "FRA", "NOR"],
+    "R32": ["PAR", "CAN", "MAR", "BRA", "FRA", "NOR", "MEX", "ENG", "USA", "BEL"],
     "R16": [],
     "QF": [],
     "SF": [],
@@ -78,11 +78,10 @@
       "stage": "R32",
       "homeTeam": "MEX",
       "awayTeam": "ECU",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 2,
+      "awayScore": 0,
       "venue": "",
       "date": "2026-06-30",
-      "time": "7:00 PM",
       "notes": ""
     },
     {
@@ -90,11 +89,10 @@
       "stage": "R32",
       "homeTeam": "ENG",
       "awayTeam": "COD",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 2,
+      "awayScore": 1,
       "venue": "",
       "date": "2026-07-01",
-      "time": "10:00 AM",
       "notes": ""
     },
     {
@@ -102,11 +100,10 @@
       "stage": "R32",
       "homeTeam": "USA",
       "awayTeam": "BIH",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 2,
+      "awayScore": 0,
       "venue": "",
       "date": "2026-07-01",
-      "time": "",
       "notes": ""
     },
     {
@@ -114,11 +111,10 @@
       "stage": "R32",
       "homeTeam": "BEL",
       "awayTeam": "SEN",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 3,
+      "awayScore": 2,
       "venue": "",
       "date": "2026-07-01",
-      "time": "",
       "notes": ""
     },
     {
