@@ -14,10 +14,8 @@ interface DashboardProps {
   matches: Match[];
 }
 
-// Gold / silver / bronze / gray / gray
 const RANK_COLORS = ['#d4a017', '#8a8a8a', '#a0693a', '#9b9b9b', '#9b9b9b'];
 
-// Gradient fills for progress bars — left-to-right, darker → lighter
 const RANK_FILLS = [
   'linear-gradient(90deg, #b87c00, #f0ca40)',
   'linear-gradient(90deg, #686868, #adadad)',
@@ -26,7 +24,6 @@ const RANK_FILLS = [
   'linear-gradient(90deg, #7e7e7e, #b4b4b4)',
 ];
 
-// Shadow hierarchy — #1 clearly elevated, ranks 2-5 recede
 const CARD_SHADOWS = [
   '0 16px 48px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.12)',
   '0 2px 10px rgba(0,0,0,0.07)',
@@ -51,10 +48,10 @@ const STAGE_STYLES: Record<string, { label: string; bg: string; color: string }>
 };
 
 const ROUND_CONFIG = [
-  { key: 'R32' as const, label: 'Round of 32',   pts: 1  },
-  { key: 'R16' as const, label: 'Round of 16',   pts: 2  },
-  { key: 'QF'  as const, label: 'Quarterfinals', pts: 4  },
-  { key: 'SF'  as const, label: 'Semifinals',    pts: 8  },
+  { key: 'R32' as const, label: 'Round of 32',   pts: 1 },
+  { key: 'R16' as const, label: 'Round of 16',   pts: 2 },
+  { key: 'QF'  as const, label: 'Quarterfinals', pts: 4 },
+  { key: 'SF'  as const, label: 'Semifinals',    pts: 8 },
 ];
 
 function formatDate(iso: string) {
@@ -66,11 +63,7 @@ function formatDate(iso: string) {
 
 type PickStatus = 'correct' | 'wrong' | 'pending';
 
-function TeamChip({
-  team, status, pts, dark,
-}: {
-  team: string; status: PickStatus; pts: number; dark?: boolean;
-}) {
+function TeamChip({ team, status, pts, dark }: { team: string; status: PickStatus; pts: number; dark?: boolean }) {
   type Cfg = { bg: string; color: string; icon: string; label: string };
   const light: Record<PickStatus, Cfg> = {
     correct: { bg: '#e6f4ea', color: '#276b3a', icon: '✓', label: `+${pts}` },
@@ -85,20 +78,7 @@ function TeamChip({
   const cfg = dark ? darkMap[status] : light[status];
 
   return (
-    <span
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: 4,
-        padding: '3px 8px',
-        borderRadius: 8,
-        fontSize: 12,
-        fontWeight: 500,
-        background: cfg.bg,
-        color: cfg.color,
-        lineHeight: 1.4,
-      }}
-    >
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, padding: '3px 8px', borderRadius: 8, fontSize: 12, fontWeight: 500, background: cfg.bg, color: cfg.color, lineHeight: 1.4 }}>
       <span style={{ fontWeight: 700, fontSize: 11 }}>{cfg.icon}</span>
       <span>{flag(team)} {team}</span>
       {cfg.label && <span style={{ fontWeight: 700, fontSize: 11 }}>{cfg.label}</span>}
@@ -108,16 +88,10 @@ function TeamChip({
 
 // ── Expanded pick breakdown ─────────────────────────────────────────────────
 
-function ExpandedDetails({
-  bracket, winners, dark,
-}: {
-  bracket: PlayerBracket; winners: Winners; dark?: boolean;
-}) {
+function ExpandedDetails({ bracket, winners, dark }: { bracket: PlayerBracket; winners: Winners; dark?: boolean }) {
   const labelColor = dark ? 'rgba(255,255,255,0.45)' : '#8a8a8a';
   const subtotalColor = (earned: number) =>
-    dark
-      ? (earned > 0 ? '#6ee89a' : 'rgba(255,255,255,0.3)')
-      : (earned > 0 ? '#276b3a' : '#a3a3a3');
+    dark ? (earned > 0 ? '#6ee89a' : 'rgba(255,255,255,0.3)') : (earned > 0 ? '#276b3a' : '#a3a3a3');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -131,19 +105,15 @@ function ExpandedDetails({
           <div key={key}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', color: labelColor, textTransform: 'uppercase' }}>
-                {label}
-                <span style={{ fontWeight: 400 }}> · +{pts}pt each</span>
+                {label}<span style={{ fontWeight: 400 }}> · +{pts}pt each</span>
               </span>
               {hasResults && (
-                <span style={{ fontSize: 12, fontWeight: 700, color: subtotalColor(earned) }}>
-                  +{earned}pt
-                </span>
+                <span style={{ fontSize: 12, fontWeight: 700, color: subtotalColor(earned) }}>+{earned}pt</span>
               )}
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {bracket[key].map(team => {
-                const status: PickStatus = !hasResults ? 'pending'
-                  : actualSet.has(team) ? 'correct' : 'wrong';
+                const status: PickStatus = !hasResults ? 'pending' : actualSet.has(team) ? 'correct' : 'wrong';
                 return <TeamChip key={team} team={team} status={status} pts={pts} dark={dark} />;
               })}
             </div>
@@ -151,7 +121,6 @@ function ExpandedDetails({
         );
       })}
 
-      {/* Champion */}
       <div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
           <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', color: labelColor, textTransform: 'uppercase' }}>
@@ -178,11 +147,7 @@ function ExpandedDetails({
 
 // ── Player card ─────────────────────────────────────────────────────────────
 
-function PlayerCard({
-  rank, player, bracket, winners,
-}: {
-  rank: number; player: PlayerScore; bracket: PlayerBracket; winners: Winners;
-}) {
+function PlayerCard({ rank, player, bracket, winners }: { rank: number; player: PlayerScore; bracket: PlayerBracket; winners: Winners }) {
   const [open, setOpen] = useState(false);
   const pct = Math.round((player.points / MAX_SCORE) * 100);
   const dark = rank === 1;
@@ -198,93 +163,38 @@ function PlayerCard({
   const dividerColor  = dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)';
 
   return (
-    <div
-      style={{
-        background: dark ? '#1a1a1a' : '#ffffff',
-        borderRadius: 20,
-        overflow: 'hidden',
-        boxShadow: cardShadow,
-      }}
-    >
-      <button
-        onClick={() => setOpen(o => !o)}
-        style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-      >
+    <div style={{ background: dark ? '#1a1a1a' : '#ffffff', borderRadius: 20, overflow: 'hidden', boxShadow: cardShadow }}>
+      <button onClick={() => setOpen(o => !o)} style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px 8px' }}>
-          {/* Rank */}
           <span style={{ fontSize: 16, fontWeight: 800, color: rankColor, width: 22, flexShrink: 0, lineHeight: 1, textAlign: 'center' }}>
             {rank}
           </span>
 
-          {/* Avatar */}
           {AVATARS[player.name] ? (
             <img
               src={AVATARS[player.name]}
               alt={player.name}
-              style={{
-                width: 46,
-                height: 46,
-                borderRadius: '50%',
-                objectFit: 'cover',
-                objectPosition: '50% 15%',
-                flexShrink: 0,
-                border: `2px solid ${dark ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.07)'}`,
-              }}
+              style={{ width: 46, height: 46, borderRadius: '50%', objectFit: 'cover', objectPosition: '50% 15%', flexShrink: 0, border: `2px solid ${dark ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.07)'}` }}
             />
           ) : (
-            <div style={{
-              width: 46,
-              height: 46,
-              borderRadius: '50%',
-              flexShrink: 0,
-              background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.07)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: 17,
-              fontWeight: 700,
-              color: dark ? 'rgba(255,255,255,0.55)' : '#9b9b9b',
-            }}>
+            <div style={{ width: 46, height: 46, borderRadius: '50%', flexShrink: 0, background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 17, fontWeight: 700, color: dark ? 'rgba(255,255,255,0.55)' : '#9b9b9b' }}>
               {player.name[0]}
             </div>
           )}
 
-          {/* Name + champion — secondary text lighter and smaller */}
           <div style={{ flex: 1, minWidth: 0 }}>
-            <p style={{ fontWeight: 600, fontSize: 15, color: textPrimary, margin: 0, lineHeight: 1.3 }}>
-              {player.name}
-            </p>
-            <p style={{ fontSize: 11, color: textSecondary, margin: '3px 0 0', letterSpacing: '0.01em' }}>
-              {flag(player.champion)}&nbsp;{player.champion}
-            </p>
+            <p style={{ fontWeight: 600, fontSize: 15, color: textPrimary, margin: 0, lineHeight: 1.3 }}>{player.name}</p>
+            <p style={{ fontSize: 11, color: textSecondary, margin: '3px 0 0', letterSpacing: '0.01em' }}>{flag(player.champion)}&nbsp;{player.champion}</p>
           </div>
 
-          {/* Points — dominant data point */}
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
-            <span style={{ fontSize: 34, fontWeight: 900, color: textPrimary, letterSpacing: '-0.03em', lineHeight: 1 }}>
-              {player.points}
-            </span>
-            <span style={{ fontSize: 11, marginLeft: 2, color: textTertiary }}>
-              /{MAX_SCORE}
-            </span>
+            <span style={{ fontSize: 34, fontWeight: 900, color: textPrimary, letterSpacing: '-0.03em', lineHeight: 1 }}>{player.points}</span>
+            <span style={{ fontSize: 11, marginLeft: 2, color: textTertiary }}>/{MAX_SCORE}</span>
           </div>
 
-          {/* Chevron */}
-          <span
-            style={{
-              color: textTertiary,
-              fontSize: 10,
-              transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-              transition: 'transform 0.25s ease',
-              flexShrink: 0,
-              lineHeight: 1,
-            }}
-          >
-            ▼
-          </span>
+          <span style={{ color: textTertiary, fontSize: 10, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease', flexShrink: 0, lineHeight: 1 }}>▼</span>
         </div>
 
-        {/* Progress bar — thicker, gradient fill */}
         <div style={{ padding: '0 20px 16px' }}>
           <div className="progress-track" style={{ background: trackBg }}>
             <div className="progress-fill" style={{ width: `${pct}%`, background: gradientFill }} />
@@ -292,24 +202,9 @@ function PlayerCard({
         </div>
       </button>
 
-      {/* Animated expand */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateRows: open ? '1fr' : '0fr',
-          transition: 'grid-template-rows 0.28s ease',
-        }}
-      >
+      <div style={{ display: 'grid', gridTemplateRows: open ? '1fr' : '0fr', transition: 'grid-template-rows 0.28s ease' }}>
         <div style={{ overflow: 'hidden' }}>
-          <div
-            style={{
-              margin: '0 12px 12px',
-              background: expandedBg,
-              borderRadius: 14,
-              padding: 16,
-              borderTop: `1px solid ${dividerColor}`,
-            }}
-          >
+          <div style={{ margin: '0 12px 12px', background: expandedBg, borderRadius: 14, padding: 16, borderTop: `1px solid ${dividerColor}` }}>
             <ExpandedDetails bracket={bracket} winners={winners} dark={dark} />
           </div>
         </div>
@@ -330,17 +225,11 @@ function CompletedMatchCard({ match }: { match: Match }) {
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
         <span style={{ fontSize: 13, fontWeight: 500 }}>{flag(match.homeTeam)} {match.homeTeam}</span>
-        <span style={{ fontSize: 15, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-          {match.homeScore} – {match.awayScore}
-        </span>
+        <span style={{ fontSize: 15, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>{match.homeScore} – {match.awayScore}</span>
         <span style={{ fontSize: 13, fontWeight: 500 }}>{match.awayTeam} {flag(match.awayTeam)}</span>
       </div>
-      {match.venue && (
-        <p style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 6 }}>📍 {match.venue}</p>
-      )}
-      {match.notes && (
-        <p style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 3, fontStyle: 'italic' }}>{match.notes}</p>
-      )}
+      {match.venue && <p style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 6 }}>📍 {match.venue}</p>}
+      {match.notes && <p style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 3, fontStyle: 'italic' }}>{match.notes}</p>}
     </div>
   );
 }
@@ -351,21 +240,15 @@ function UpcomingMatchCard({ match }: { match: Match }) {
     <div className="card" style={{ padding: '14px 16px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
         <span className="stage-badge" style={{ background: s.bg, color: s.color }}>{s.label}</span>
-        <span style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>
-          {formatDate(match.date)}{match.time ? ` · ${match.time}` : ''}
-        </span>
+        <span style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>{formatDate(match.date)}{match.time ? ` · ${match.time}` : ''}</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
         <span style={{ fontSize: 13, fontWeight: 500 }}>{flag(match.homeTeam)} {match.homeTeam}</span>
         <span style={{ fontSize: 12, fontWeight: 500, color: 'var(--text-tertiary)' }}>vs</span>
         <span style={{ fontSize: 13, fontWeight: 500 }}>{match.awayTeam} {flag(match.awayTeam)}</span>
       </div>
-      {match.venue && (
-        <p style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 6 }}>📍 {match.venue}</p>
-      )}
-      {match.notes && (
-        <p style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 3, fontStyle: 'italic' }}>{match.notes}</p>
-      )}
+      {match.venue && <p style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 6 }}>📍 {match.venue}</p>}
+      {match.notes && <p style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 3, fontStyle: 'italic' }}>{match.notes}</p>}
     </div>
   );
 }
@@ -380,24 +263,116 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+// ── Bracket match card ──────────────────────────────────────────────────────
+
+function BracketMatchCard({ match, winnerSet }: { match: Match; winnerSet: Set<string> }) {
+  const done = match.homeScore != null;
+  const homeWon = done && winnerSet.has(match.homeTeam);
+  const awayWon = done && winnerSet.has(match.awayTeam);
+
+  return (
+    <div className="card" style={{ padding: '12px 14px' }}>
+      <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginBottom: 8, textAlign: 'right' }}>
+        {formatDate(match.date)}{!done && match.time ? ` · ${match.time}` : ''}
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+        <span style={{ fontSize: 13, fontWeight: homeWon ? 700 : 500, color: done && !homeWon ? 'var(--text-tertiary)' : 'var(--text-primary)' }}>
+          {flag(match.homeTeam)} {match.homeTeam}
+        </span>
+        <span style={{ fontSize: 14, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)', minWidth: 36, textAlign: 'center' }}>
+          {done ? `${match.homeScore}–${match.awayScore}` : 'vs'}
+        </span>
+        <span style={{ fontSize: 13, fontWeight: awayWon ? 700 : 500, color: done && !awayWon ? 'var(--text-tertiary)' : 'var(--text-primary)' }}>
+          {match.awayTeam} {flag(match.awayTeam)}
+        </span>
+      </div>
+      {match.notes && (
+        <p style={{ fontSize: 10, color: 'var(--text-tertiary)', marginTop: 6, fontStyle: 'italic', textAlign: 'center' }}>
+          {match.notes}
+        </p>
+      )}
+    </div>
+  );
+}
+
+// ── Bracket view ─────────────────────────────────────────────────────────────
+
+type ArrayKey = Exclude<keyof Winners, 'Champion'>;
+
+const LATER_ROUNDS: Array<{ wKey: ArrayKey; label: string; total: number }> = [
+  { wKey: 'R32', label: 'Round of 16',   total: 16 },
+  { wKey: 'R16', label: 'Quarterfinals', total: 8  },
+  { wKey: 'QF',  label: 'Semifinals',    total: 4  },
+  { wKey: 'SF',  label: 'Final',         total: 2  },
+];
+
+function BracketView({ matches, winners }: { matches: Match[]; winners: Winners }) {
+  const r32WinnerSet = new Set(winners.R32 ?? []);
+  const r32Matches = matches.filter(m => m.stage === 'R32');
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+      {/* Round of 32 */}
+      <section>
+        <SectionLabel>Round of 32</SectionLabel>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 8 }}>
+          {r32Matches.map(m => (
+            <BracketMatchCard key={m.id} match={m} winnerSet={r32WinnerSet} />
+          ))}
+        </div>
+      </section>
+
+      {/* R16 through Final — show advancing teams + TBD count */}
+      {LATER_ROUNDS.map(({ wKey, label, total }) => {
+        const advancing = winners[wKey] as string[];
+        const tbd = total - advancing.length;
+        return (
+          <section key={label}>
+            <SectionLabel>{label}</SectionLabel>
+            <div className="card" style={{ padding: 16 }}>
+              {advancing.length > 0 && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: tbd > 0 ? 10 : 0 }}>
+                  {advancing.map(team => (
+                    <span key={team} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, padding: '3px 8px', borderRadius: 8, fontSize: 12, fontWeight: 600, background: '#e6f4ea', color: '#276b3a' }}>
+                      {flag(team)} {team}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <p style={{ fontSize: 12, color: 'var(--text-tertiary)', margin: 0, fontStyle: 'italic' }}>
+                {tbd > 0 ? `${tbd} team${tbd !== 1 ? 's' : ''} still to advance` : 'All teams confirmed'}
+              </p>
+            </div>
+          </section>
+        );
+      })}
+
+      {/* Champion */}
+      <section>
+        <SectionLabel>Champion</SectionLabel>
+        <div className="card" style={{ padding: 16 }}>
+          {winners.Champion ? (
+            <span style={{ fontSize: 15, fontWeight: 700 }}>{flag(winners.Champion)} {winners.Champion}</span>
+          ) : (
+            <p style={{ fontSize: 12, color: 'var(--text-tertiary)', margin: 0, fontStyle: 'italic' }}>To be determined</p>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+}
+
 // ── Root Dashboard ──────────────────────────────────────────────────────────
 
-export default function Dashboard({
-  realistic, fun, realisticBrackets, funBrackets, winners, matches,
-}: DashboardProps) {
-  const [tab, setTab] = useState<'realistic' | 'fun'>('realistic');
+export default function Dashboard({ realistic, fun, realisticBrackets, funBrackets, winners, matches }: DashboardProps) {
+  const [tab, setTab] = useState<'realistic' | 'fun' | 'bracket'>('realistic');
 
-  const players  = tab === 'realistic' ? realistic : fun;
-  const brackets = tab === 'realistic' ? realisticBrackets : funBrackets;
+  const players  = tab === 'fun' ? fun : realistic;
+  const brackets = tab === 'fun' ? funBrackets : realisticBrackets;
   const sorted   = [...players].sort((a, b) => b.points - a.points);
 
-  const completed = [...matches]
-    .filter(m => m.homeScore != null)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  const upcoming = [...matches]
-    .filter(m => m.homeScore == null)
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  const completed = [...matches].filter(m => m.homeScore != null).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const upcoming  = [...matches].filter(m => m.homeScore == null).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   return (
     <div>
@@ -409,77 +384,67 @@ export default function Dashboard({
         <button className={`tab-pill ${tab === 'fun' ? 'active' : ''}`} onClick={() => setTab('fun')}>
           Fuck It I&apos;m Young
         </button>
+        <button className={`tab-pill ${tab === 'bracket' ? 'active' : ''}`} onClick={() => setTab('bracket')}>
+          Bracket
+        </button>
       </div>
 
-      {/* Scoring legend */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 20 }}>
-        {[
-          { label: 'R32', pts: '1pt' },
-          { label: 'R16', pts: '2pt' },
-          { label: 'QF',  pts: '4pt' },
-          { label: 'SF',  pts: '8pt' },
-          { label: 'Champion', pts: '+16pt' },
-        ].map(({ label, pts }) => (
-          <span
-            key={label}
-            style={{
-              fontSize: 11,
-              fontWeight: 500,
-              padding: '3px 9px',
-              borderRadius: 7,
-              background: 'rgba(0,0,0,0.13)',
-              color: '#5a5a5a',
-            }}
-          >
-            {label} = {pts}
-          </span>
-        ))}
-      </div>
+      {/* Leaderboard tabs */}
+      {tab !== 'bracket' && (
+        <>
+          {/* Scoring legend */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 20 }}>
+            {[
+              { label: 'R32', pts: '1pt' },
+              { label: 'R16', pts: '2pt' },
+              { label: 'QF',  pts: '4pt' },
+              { label: 'SF',  pts: '8pt' },
+              { label: 'Champion', pts: '+16pt' },
+            ].map(({ label, pts }) => (
+              <span key={label} style={{ fontSize: 11, fontWeight: 500, padding: '3px 9px', borderRadius: 7, background: 'rgba(0,0,0,0.13)', color: '#5a5a5a' }}>
+                {label} = {pts}
+              </span>
+            ))}
+          </div>
 
-      {/* Leaderboard */}
-      <section style={{ marginBottom: 32 }}>
-        <SectionLabel>Leaderboard</SectionLabel>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {sorted.map((p, i) => (
-            <PlayerCard
-              key={p.name}
-              rank={i + 1}
-              player={p}
-              bracket={brackets[p.name]}
-              winners={winners}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* Two-column results */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
-        <section>
-          <SectionLabel>Recent Results</SectionLabel>
-          {completed.length === 0 ? (
-            <div className="card" style={{ padding: '28px 20px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: 13 }}>
-              No results yet
-            </div>
-          ) : (
+          {/* Leaderboard */}
+          <section style={{ marginBottom: 32 }}>
+            <SectionLabel>Leaderboard</SectionLabel>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {completed.map(m => <CompletedMatchCard key={m.id} match={m} />)}
+              {sorted.map((p, i) => (
+                <PlayerCard key={p.name} rank={i + 1} player={p} bracket={brackets[p.name]} winners={winners} />
+              ))}
             </div>
-          )}
-        </section>
+          </section>
 
-        <section>
-          <SectionLabel>Upcoming Games</SectionLabel>
-          {upcoming.length === 0 ? (
-            <div className="card" style={{ padding: '28px 20px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: 13 }}>
-              No upcoming games
-            </div>
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {upcoming.map(m => <UpcomingMatchCard key={m.id} match={m} />)}
-            </div>
-          )}
-        </section>
-      </div>
+          {/* Two-column results */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
+            <section>
+              <SectionLabel>Recent Results</SectionLabel>
+              {completed.length === 0 ? (
+                <div className="card" style={{ padding: '28px 20px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: 13 }}>No results yet</div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {completed.map(m => <CompletedMatchCard key={m.id} match={m} />)}
+                </div>
+              )}
+            </section>
+            <section>
+              <SectionLabel>Upcoming Games</SectionLabel>
+              {upcoming.length === 0 ? (
+                <div className="card" style={{ padding: '28px 20px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: 13 }}>No upcoming games</div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {upcoming.map(m => <UpcomingMatchCard key={m.id} match={m} />)}
+                </div>
+              )}
+            </section>
+          </div>
+        </>
+      )}
+
+      {/* Bracket tab */}
+      {tab === 'bracket' && <BracketView matches={matches} winners={winners} />}
     </div>
   );
 }

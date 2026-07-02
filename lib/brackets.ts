@@ -3,7 +3,7 @@ import type { PlayerBracket } from './types';
 export const REALISTIC: Record<string, PlayerBracket> = {
   Leonel: {
     name: 'Leonel',
-    R32: ['GER','FRA','CAN','NED','POR','ESP','USA','BEL','BRA','NOR','MEX','ENG','ARG','EGY','SUI','COL'],
+    R32: ['PAR','FRA','CAN','NED','POR','ESP','USA','BEL','BRA','NOR','MEX','ENG','ARG','EGY','SUI','COL'],
     R16: ['FRA','NED','POR','ESP','USA','BEL','BRA','MEX','ARG','COL'],
     QF:  ['FRA','ESP','BRA','MEX'],
     SF:  ['FRA','MEX'],
