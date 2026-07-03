@@ -1,25 +1,14 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
-import type { ResultsData } from '@/lib/types';
 import { REALISTIC, FUN } from '@/lib/brackets';
 import { buildPlayerScores } from '@/lib/scoring';
+import { readResults } from '@/lib/db';
 import Dashboard from './components/Dashboard';
 
 export const dynamic = 'force-dynamic';
 
-function readResults(): ResultsData {
-  try {
-    const p = path.join(process.cwd(), 'data', 'results.json');
-    return JSON.parse(fs.readFileSync(p, 'utf-8')) as ResultsData;
-  } catch {
-    return { winners: { R32: [], R16: [], QF: [], SF: [], Champion: null }, matches: [] };
-  }
-}
 
-
-export default function Home() {
-  const data = readResults();
+export default async function Home() {
+  const data = await readResults();
   const realistic = buildPlayerScores(REALISTIC, data.winners);
   const fun = buildPlayerScores(FUN, data.winners);
 
