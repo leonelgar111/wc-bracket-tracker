@@ -148,12 +148,13 @@ function ExpandedDetails({ bracket, winners, dark }: { bracket: PlayerBracket; w
 // ── Player card ─────────────────────────────────────────────────────────────
 
 const BURST_SLOTS = [
-  { x:  8, delay: 0.00 },
-  { x: 22, delay: 0.08 },
-  { x: 38, delay: 0.14 },
-  { x: 54, delay: 0.04 },
-  { x: 68, delay: 0.18 },
-  { x: 82, delay: 0.10 },
+  { x:  6, delay: 0.00 },
+  { x: 18, delay: 0.09 },
+  { x: 32, delay: 0.16 },
+  { x: 46, delay: 0.05 },
+  { x: 60, delay: 0.20 },
+  { x: 74, delay: 0.11 },
+  { x: 87, delay: 0.07 },
 ];
 
 function PlayerCard({ rank, player, bracket, winners }: { rank: number; player: PlayerScore; bracket: PlayerBracket; winners: Winners }) {
@@ -231,12 +232,12 @@ function PlayerCard({ rank, player, bracket, winners }: { rank: number; player: 
       </div>
     </div>
 
-    {/* Champion burst — floats up outside the card on open */}
+    {/* Champion burst — launches from top of card, travels upward */}
     {bursting && BURST_SLOTS.map(({ x, delay }, i) => (
       <span
         key={i}
         className="emoji-burst"
-        style={{ bottom: '30%', left: `${x}%`, animationDelay: `${delay}s` }}
+        style={{ top: '30px', left: `${x}%`, animationDelay: `${delay}s` }}
       >
         {i % 2 === 0 ? flag(bracket.Champion) : '🏆'}
       </span>
