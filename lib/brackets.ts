@@ -55,7 +55,7 @@ export const FUN: Record<string, PlayerBracket> = {
   Adan: {
     name: 'Adan',
     R32: ['GER','FRA','CAN','NED','POR','ESP','BIH','SEN','BRA','CIV','MEX','COD','CPV','EGY','SUI','COL'],
-    R16: ['GER','FRA','CAN','NED','POR','ESP','BIH','SEN','BRA','CIV','MEX','COD','CPV','EGY','SUI','COL'],
+    R16: ['FRA','NED','POR','SEN','BRA','MEX','CPV','COL'],
     QF:  ['FRA','NED','POR','SEN','BRA','MEX','CPV','COL'],
     SF:  ['FRA','POR','MEX','COL'],
     Champion: 'MEX',
@@ -63,7 +63,7 @@ export const FUN: Record<string, PlayerBracket> = {
   Abe: {
     name: 'Abe',
     R32: ['GER','FRA','CAN','MAR','POR','ESP','USA','BEL','BRA','CIV','MEX','ENG','ARG','EGY','ALG','COL'],
-    R16: ['GER','FRA','CAN','MAR','POR','ESP','USA','BEL','BRA','CIV','MEX','ENG','ARG','EGY','ALG','COL'],
+    R16: ['FRA','MAR','ESP','BEL','BRA','MEX','ARG','COL'],
     QF:  ['FRA','MAR','ESP','BEL','BRA','MEX','ARG','COL'],
     SF:  ['FRA','ESP','MEX','COL'],
     Champion: 'FRA',
@@ -71,7 +71,7 @@ export const FUN: Record<string, PlayerBracket> = {
   Joey: {
     name: 'Joey',
     R32: ['GER','FRA','CAN','NED','POR','ESP','BIH','SEN','BRA','CIV','MEX','ENG','ARG','EGY','SUI','COL'],
-    R16: ['GER','FRA','CAN','NED','POR','ESP','BIH','SEN','BRA','CIV','MEX','ENG','ARG','EGY','SUI','COL'],
+    R16: ['FRA','NED','POR','SEN','BRA','MEX','ARG','COL'],
     QF:  ['FRA','NED','POR','SEN','BRA','MEX','ARG','COL'],
     SF:  ['FRA','POR','MEX','COL'],
     Champion: 'MEX',
@@ -79,7 +79,7 @@ export const FUN: Record<string, PlayerBracket> = {
   Carlos: {
     name: 'Carlos',
     R32: ['GER','FRA','CAN','NED','POR','ESP','USA','BEL','JPN','NOR','MEX','ENG','ARG','EGY','ALG','COL'],
-    R16: ['GER','FRA','CAN','NED','POR','ESP','USA','BEL','JPN','NOR','MEX','ENG','ARG','EGY','ALG','COL'],
+    R16: ['GER','NED','POR','USA','JPN','MEX','EGY','COL'],
     QF:  ['GER','NED','POR','USA','JPN','MEX','EGY','COL'],
     SF:  ['NED','POR','MEX','COL'],
     Champion: 'MEX',
