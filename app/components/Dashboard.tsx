@@ -164,7 +164,7 @@ function PlayerCard({ rank, player, bracket, winners }: { rank: number; player: 
 
   return (
     <div style={{ background: dark ? '#1a1a1a' : '#ffffff', borderRadius: 20, overflow: 'hidden', boxShadow: cardShadow }}>
-      <button onClick={() => setOpen(o => !o)} style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+      <button onClick={() => setOpen(o => !o)} className={dark ? 'player-btn-dark' : 'player-btn'} style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px 8px' }}>
           <span style={{ fontSize: 16, fontWeight: 800, color: rankColor, width: 22, flexShrink: 0, lineHeight: 1, textAlign: 'center' }}>
             {rank}
