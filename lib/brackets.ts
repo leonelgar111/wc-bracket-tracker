@@ -4,7 +4,7 @@ export const REALISTIC: Record<string, PlayerBracket> = {
   Leonel: {
     name: 'Leonel',
     R32: ['PAR','FRA','CAN','NED','POR','ESP','USA','BEL','BRA','NOR','MEX','ENG','ARG','EGY','SUI','COL'],
-    R16: ['FRA','NED','POR','ESP','USA','BEL','BRA','MEX','ARG','COL'],
+    R16: ['FRA','NED','ESP','USA','BRA','MEX','ARG','COL'],
     QF:  ['FRA','ESP','BRA','MEX'],
     SF:  ['FRA','MEX'],
     Champion: 'MEX',
@@ -12,7 +12,7 @@ export const REALISTIC: Record<string, PlayerBracket> = {
   Adan: {
     name: 'Adan',
     R32: ['GER','FRA','CAN','NED','POR','ESP','USA','SEN','BRA','CIV','MEX','ENG','ARG','AUS','SUI','COL'],
-    R16: ['GER','FRA','CAN','NED','POR','ESP','USA','SEN'],
+    R16: ['FRA','NED','ESP','SEN','BRA','MEX','ARG','COL'],
     QF:  ['NED','ESP','BRA','MEX'],
     SF:  ['NED','ESP','BRA','ARG'],
     Champion: 'NED',
@@ -20,7 +20,7 @@ export const REALISTIC: Record<string, PlayerBracket> = {
   Abe: {
     name: 'Abe',
     R32: ['GER','FRA','CAN','NED','POR','ESP','USA','BEL','BRA','NOR','MEX','ENG','ARG','EGY','ALG','COL'],
-    R16: ['GER','FRA','CAN','NED','POR','ESP','USA','BEL','BRA','NOR','MEX','ENG','ARG','EGY','ALG','COL'],
+    R16: ['FRA','NED','POR','BEL','BRA','MEX','ARG','COL'],
     QF:  ['FRA','NED','POR','BEL','BRA','MEX','ARG','COL'],
     SF:  ['FRA','POR','BRA','COL'],
     Champion: 'FRA',
@@ -28,7 +28,7 @@ export const REALISTIC: Record<string, PlayerBracket> = {
   Joey: {
     name: 'Joey',
     R32: ['GER','FRA','CAN','NED','POR','ESP','USA','SEN','BRA','NOR','MEX','ENG','ARG','EGY','SUI','COL'],
-    R16: ['GER','FRA','CAN','NED','POR','ESP','USA','SEN','BRA','NOR','MEX','ENG','ARG','EGY','SUI','COL'],
+    R16: ['FRA','NED','POR','SEN','BRA','MEX','ARG','COL'],
     QF:  ['FRA','NED','POR','SEN','BRA','MEX','ARG','COL'],
     SF:  ['FRA','POR','MEX','ARG'],
     Champion: 'FRA',
@@ -36,7 +36,7 @@ export const REALISTIC: Record<string, PlayerBracket> = {
   Carlos: {
     name: 'Carlos',
     R32: ['GER','FRA','CAN','NED','POR','ESP','USA','BEL','BRA','NOR','MEX','ENG','ARG','EGY','SUI','COL'],
-    R16: ['GER','FRA','CAN','NED','POR','ESP','USA','BEL','BRA','NOR','MEX','ENG','ARG','EGY','SUI','COL'],
+    R16: ['FRA','NED','ESP','BEL','BRA','MEX','ARG','COL'],
     QF:  ['FRA','NED','ESP','BEL','BRA','MEX','ARG','COL'],
     SF:  ['FRA','ESP','MEX','ARG'],
     Champion: 'FRA',
