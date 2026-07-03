@@ -147,8 +147,27 @@ function ExpandedDetails({ bracket, winners, dark }: { bracket: PlayerBracket; w
 
 // ── Player card ─────────────────────────────────────────────────────────────
 
+const BURST_SLOTS = [
+  { x:  8, delay: 0.00 },
+  { x: 22, delay: 0.08 },
+  { x: 38, delay: 0.14 },
+  { x: 54, delay: 0.04 },
+  { x: 68, delay: 0.18 },
+  { x: 82, delay: 0.10 },
+];
+
 function PlayerCard({ rank, player, bracket, winners }: { rank: number; player: PlayerScore; bracket: PlayerBracket; winners: Winners }) {
   const [open, setOpen] = useState(false);
+  const [bursting, setBursting] = useState(false);
+
+  function handleToggle() {
+    if (!open) {
+      setBursting(true);
+      setTimeout(() => setBursting(false), 2000);
+    }
+    setOpen(o => !o);
+  }
+
   const pct = Math.round((player.points / MAX_SCORE) * 100);
   const dark = rank === 1;
   const rankColor    = RANK_COLORS[rank - 1] ?? '#9b9b9b';
@@ -163,8 +182,9 @@ function PlayerCard({ rank, player, bracket, winners }: { rank: number; player: 
   const dividerColor  = dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)';
 
   return (
+    <div style={{ position: 'relative' }}>
     <div style={{ background: dark ? '#1a1a1a' : '#ffffff', borderRadius: 20, overflow: 'hidden', boxShadow: cardShadow }}>
-      <button onClick={() => setOpen(o => !o)} className={dark ? 'player-btn-dark' : 'player-btn'} style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+      <button onClick={handleToggle} className={dark ? 'player-btn-dark' : 'player-btn'} style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px 8px' }}>
           <span style={{ fontSize: 16, fontWeight: 800, color: rankColor, width: 22, flexShrink: 0, lineHeight: 1, textAlign: 'center' }}>
             {rank}
@@ -209,6 +229,18 @@ function PlayerCard({ rank, player, bracket, winners }: { rank: number; player: 
           </div>
         </div>
       </div>
+    </div>
+
+    {/* Champion burst — floats up outside the card on open */}
+    {bursting && BURST_SLOTS.map(({ x, delay }, i) => (
+      <span
+        key={i}
+        className="emoji-burst"
+        style={{ bottom: '30%', left: `${x}%`, animationDelay: `${delay}s` }}
+      >
+        {i % 2 === 0 ? flag(bracket.Champion) : '🏆'}
+      </span>
+    ))}
     </div>
   );
 }
